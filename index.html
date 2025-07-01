@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Booking Access</title>
   <style>
     /* Set the background image from the provided URL */
@@ -15,6 +17,24 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      text-align: center;
+    }
+
+    /* Style the top Hindi greeting */
+    .greeting {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      font-size: 48px; /* Larger font size */
+      font-weight: bold;
+      color: #ff4081; /* Pink color */
+      background: linear-gradient(45deg, #ff4081, #ff80ab); /* Pink gradient */
+      -webkit-background-clip: text; /* Make the gradient apply only to the text */
+      background-clip: text;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 64, 129, 0.8); /* Glow effect */
+      z-index: 10; /* Ensure it stays on top */
+      font-family: 'Arial', sans-serif;
+      padding: 10px 0;
     }
 
     /* Centering the form container */
@@ -25,6 +45,7 @@
       width: 80%; /* Adjust width as needed */
       max-width: 600px; /* Maximum width */
       text-align: center;
+      z-index: 1; /* Ensure form is behind the greeting */
     }
 
     h2 {
@@ -75,6 +96,11 @@
   </style>
 </head>
 <body>
+
+  <!-- Hindi Greeting Text -->
+  <div class="greeting">
+    स्नेह प्रयास परिवार आपका हार्दिक स्वागत करता है
+  </div>
 
   <div class="container">
     <h2>Enter Booking ID to Access the Form</h2>
