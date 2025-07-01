@@ -37,6 +37,38 @@
       padding: 10px 0;
     }
 
+    /* Style the Sneh Prayas Committee text */
+    .committee {
+      position: absolute;
+      top: 90px; /* Position it below the main greeting */
+      width: 100%;
+      font-size: 30px; /* Slightly smaller font size */
+      font-weight: bold;
+      color: #ffffff; /* White color */
+      background: linear-gradient(45deg, #ff80ab, #ff4081); /* Gradient from pink to light pink */
+      -webkit-background-clip: text; /* Gradient clipped to text */
+      background-clip: text;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 64, 129, 0.6); /* Subtle glow */
+      z-index: 10; /* Ensure it stays on top */
+      font-family: 'Arial', sans-serif;
+      padding: 5px 0;
+      text-transform: uppercase; /* Make the text uppercase for a bold look */
+      letter-spacing: 2px; /* Slight letter spacing */
+      animation: fadeIn 3s ease-out; /* Fading in animation */
+    }
+
+    /* Animation for fading in the text */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Centering the form container */
     .container {
       background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
@@ -99,7 +131,12 @@
 
   <!-- Hindi Greeting Text -->
   <div class="greeting">
-    स्नेह प्रयास परिवार आपका हार्दिक स्वागत करता है 🙏🙏🙏
+    स्नेह प्रयास परिवार आपका हार्दिक स्वागत करता है 🙏
+  </div>
+
+  <!-- Sneh Prayas Committee Text -->
+  <div class="committee">
+    Sneh Prayas Committee
   </div>
 
   <div class="container">
