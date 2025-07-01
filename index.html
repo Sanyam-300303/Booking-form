@@ -2,22 +2,48 @@
 <html>
 <head>
   <title>Booking Access</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+    #formContainer {
+      margin-top: 30px;
+    }
+    #errorMsg {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Enter Booking ID to Access Form</h2>
+
+  <h2>Enter Booking ID to Access the Form</h2>
   <input type="text" id="bookingId" placeholder="Enter Booking ID (e.g., spc01)">
   <button onclick="checkBookingId()">Submit</button>
 
-  <div id="formContainer" style="display:none; margin-top: 20px;">
-    <h3>Form</h3>
-    <form>
-      Name: <input type="text" name="name"><br><br>
-      Email: <input type="email" name="email"><br><br>
-      <input type="submit" value="Submit">
-    </form>
-  </div>
+  <p id="errorMsg"></p>
 
-  <p id="errorMsg" style="color:red;"></p>
+  <div id="formContainer" style="display:none;">
+    <h3>Booking Form</h3>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfa4JVsl8UrsiXwkDofkSUMUAy5JCLhde6m3tioh0_hxrh-PA/viewform?embedded=true" 
+            width="640" 
+            height="700" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0">
+      Loading…
+    </iframe>
+  </div>
 
   <script>
     const validBookingIds = [];
@@ -27,14 +53,18 @@
 
     function checkBookingId() {
       const enteredId = document.getElementById("bookingId").value.trim().toLowerCase();
+      const errorMsg = document.getElementById("errorMsg");
+      const formContainer = document.getElementById("formContainer");
+
       if (validBookingIds.includes(enteredId)) {
-        document.getElementById("formContainer").style.display = "block";
-        document.getElementById("errorMsg").innerText = "";
+        formContainer.style.display = "block";
+        errorMsg.innerText = "";
       } else {
-        document.getElementById("formContainer").style.display = "none";
-        document.getElementById("errorMsg").innerText = "Invalid Booking ID.";
+        formContainer.style.display = "none";
+        errorMsg.innerText = "❌ Invalid Booking ID. Please try again.";
       }
     }
   </script>
+
 </body>
 </html>
