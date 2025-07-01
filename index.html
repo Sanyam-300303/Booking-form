@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking Access</title>
+</head>
+<body>
+  <h2>Enter Booking ID to Access Form</h2>
+  <input type="text" id="bookingId" placeholder="Enter Booking ID (e.g., spc01)">
+  <button onclick="checkBookingId()">Submit</button>
+
+  <div id="formContainer" style="display:none; margin-top: 20px;">
+    <h3>Form</h3>
+    <form>
+      Name: <input type="text" name="name"><br><br>
+      Email: <input type="email" name="email"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <p id="errorMsg" style="color:red;"></p>
+
+  <script>
+    const validBookingIds = [];
+    for (let i = 1; i <= 52; i++) {
+      validBookingIds.push("spc" + (i < 10 ? "0" + i : i));
+    }
+
+    function checkBookingId() {
+      const enteredId = document.getElementById("bookingId").value.trim().toLowerCase();
+      if (validBookingIds.includes(enteredId)) {
+        document.getElementById("formContainer").style.display = "block";
+        document.getElementById("errorMsg").innerText = "";
+      } else {
+        document.getElementById("formContainer").style.display = "none";
+        document.getElementById("errorMsg").innerText = "Invalid Booking ID.";
+      }
+    }
+  </script>
+</body>
+</html>
