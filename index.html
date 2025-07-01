@@ -4,13 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Booking Access</title>
+
+  <!-- Google Fonts for modern styling -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;900&display=swap" rel="stylesheet" />
+
   <style>
-    /* Set the background image */
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       height: 100vh;
+      font-family: 'Poppins', sans-serif;
       background-image: url('https://www.kailash-yatra.org/images/ashtpad.jpg');
       background-size: cover;
       background-position: center;
@@ -19,65 +22,36 @@
       align-items: center;
       text-align: center;
       position: relative;
+      flex-direction: column;
     }
 
-    /* Hindi Greeting */
     .greeting {
       position: absolute;
       top: 20px;
       width: 100%;
-      font-size: 48px;
-      font-weight: bold;
+      font-size: 42px;
+      font-weight: 900;
       color: #ff4081;
-      background: linear-gradient(45deg, #ff4081, #ff80ab);
+      background: linear-gradient(135deg, #ff4081, #ff80ab, #ff4081);
       -webkit-background-clip: text;
       background-clip: text;
-      text-shadow: 3px 3px 8px rgba(0,0,0,0.5), 0 0 25px rgba(255,64,129,0.8);
-      z-index: 10;
-      font-family: 'Arial', sans-serif;
+      color: transparent;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 20px rgba(255,64,129,0.7);
+      animation: fadeInTop 2s ease-out;
       padding: 10px 0;
-    }
-
-    /* Sneh Prayas Committee text */
-    .committee {
-      position: absolute;
-      top: 90px;
-      width: 100%;
-      font-size: 30px;
-      font-weight: bold;
-      color: #fff;
-      background: linear-gradient(45deg, #ff80ab, #ff4081);
-      -webkit-background-clip: text;
-      background-clip: text;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.3), 0 0 10px rgba(255,64,129,0.6);
       z-index: 10;
-      font-family: 'Arial', sans-serif;
-      padding: 5px 0;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      animation: fadeIn 3s ease-out;
     }
 
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Form container */
     .container {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 20px;
-      border-radius: 10px;
-      width: 80%;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 20px 30px;
+      border-radius: 12px;
+      width: 85%;
       max-width: 600px;
       text-align: center;
-      z-index: 1;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      margin-top: 100px;
+      z-index: 2;
     }
 
     h2 {
@@ -85,20 +59,21 @@
     }
 
     input[type="text"] {
-      padding: 8px;
+      padding: 10px;
       font-size: 16px;
       width: 80%;
-      margin: 10px 0;
-      border-radius: 5px;
+      margin: 12px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
 
     button {
-      padding: 10px 20px;
+      padding: 10px 24px;
       font-size: 16px;
       background-color: #007bff;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
     }
 
@@ -113,7 +88,8 @@
 
     .terms {
       font-size: 14px;
-      color: #555;
+      color: #444;
+      margin-top: 15px;
     }
 
     .terms input[type="checkbox"] {
@@ -124,6 +100,32 @@
       width: 100%;
       height: 600px;
       border: none;
+      margin-top: 15px;
+    }
+
+    /* Stylish footer */
+    .footer {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 40px;
+      color: #fff;
+      background: linear-gradient(45deg, #ffc1e3, #ff80ab, #ff4081);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.2), 0 0 10px rgba(255, 64, 129, 0.5);
+      animation: fadeInBottom 2s ease-out;
+    }
+
+    /* Fade animations */
+    @keyframes fadeInTop {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInBottom {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -131,10 +133,6 @@
 
   <div class="greeting">
     स्नेह प्रयास परिवार आपका हार्दिक स्वागत करता है 🙏
-  </div>
-
-  <div class="committee">
-    For Sneh Prayas Committee
   </div>
 
   <div class="container">
@@ -147,18 +145,21 @@
     <div id="formContainer" style="display:none;">
       <h3>Booking Form</h3>
       <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSfa4JVsl8UrsiXwkDofkSUMUAy5JCLhde6m3tioh0_hxrh-PA/viewform?embedded=true"
-      >
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfa4JVsl8UrsiXwkDofkSUMUAy5JCLhde6m3tioh0_hxrh-PA/viewform?embedded=true">
         Loading…
       </iframe>
 
       <div class="terms">
         <input type="checkbox" id="termsCheckbox" required />
         <label for="termsCheckbox">
-          We hereby confirm that all the information provided is accurate and complete to the best of our knowledge. We acknowledge that we have read, understood, and agree to abide by the terms and conditions set forth by the Sneh Prayas Yatra Committee. Furthermore, we understand that the Committee reserves the right to reject our application without providing any reason, and may modify the itinerary, route, or destinations at any time prior to the trip.
+          We hereby confirm that all the information provided is accurate and complete to the best of our knowledge. We acknowledge that we have read, understood, and agree to abide by the terms and conditions set forth by the Sneh Prayas Yatra Committee. Furthermore, we understand that the Committee reserves the right to reject our application without providing any reason and may modify the itinerary, route, or destinations at any time prior to the trip.
         </label>
       </div>
     </div>
+  </div>
+
+  <div class="footer">
+    For Sneh Prayas Committee
   </div>
 
   <script>
