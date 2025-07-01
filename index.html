@@ -3,46 +3,99 @@
 <head>
   <title>Booking Access</title>
   <style>
+    /* Set the background image from the provided URL */
     body {
       font-family: Arial, sans-serif;
-      margin: 30px;
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* Full viewport height */
+      background-image: url('https://www.kailash-yatra.org/images/ashtpad.jpg'); /* Background image URL */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
+    /* Centering the form container */
+    .container {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%; /* Adjust width as needed */
+      max-width: 600px; /* Maximum width */
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+    }
+
     input[type="text"] {
       padding: 8px;
       font-size: 16px;
+      width: 80%;
+      margin: 10px 0;
+      border-radius: 5px;
     }
+
     button {
-      padding: 8px 16px;
+      padding: 10px 20px;
       font-size: 16px;
-      margin-left: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-    #formContainer {
-      margin-top: 30px;
+
+    button:hover {
+      background-color: #0056b3;
     }
+
     #errorMsg {
       color: red;
       margin-top: 10px;
+    }
+
+    .terms {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .terms input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
     }
   </style>
 </head>
 <body>
 
-  <h2>Enter Booking ID to Access the Form</h2>
-  <input type="text" id="bookingId" placeholder="Enter Booking ID (e.g., spc01)">
-  <button onclick="checkBookingId()">Submit</button>
+  <div class="container">
+    <h2>Enter Booking ID to Access the Form</h2>
+    <input type="text" id="bookingId" placeholder="Enter Booking ID (e.g., spc01)">
+    <button onclick="checkBookingId()">Submit</button>
 
-  <p id="errorMsg"></p>
+    <p id="errorMsg"></p>
 
-  <div id="formContainer" style="display:none;">
-    <h3>Booking Form</h3>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfa4JVsl8UrsiXwkDofkSUMUAy5JCLhde6m3tioh0_hxrh-PA/viewform?embedded=true" 
-            width="640" 
-            height="700" 
-            frameborder="0" 
-            marginheight="0" 
-            marginwidth="0">
-      Loading…
-    </iframe>
+    <div id="formContainer" style="display:none;">
+      <h3>Booking Form</h3>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfa4JVsl8UrsiXwkDofkSUMUAy5JCLhde6m3tioh0_hxrh-PA/viewform?embedded=true">
+        Loading…
+      </iframe>
+
+      <div class="terms">
+        <input type="checkbox" id="termsCheckbox" required>
+        <label for="termsCheckbox">
+          We hereby confirm that all the information provided is accurate and complete to the best of our knowledge. We acknowledge that we have read, understood, and agree to abide by the terms and conditions set forth by the Sneh Prayas Yatra Committee. Furthermore, we understand that the Committee reserves the right to reject our application without providing any reason, and may modify the itinerary, route, or destinations at any time prior to the trip.
+        </label>
+      </div>
+    </div>
   </div>
 
   <script>
