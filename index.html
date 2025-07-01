@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Booking Access</title>
   <style>
-    /* Set the background image from the provided URL */
+    /* Set the background image */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      height: 100vh; /* Full viewport height */
-      background-image: url('https://www.kailash-yatra.org/images/ashtpad.jpg'); /* Background image URL */
+      height: 100vh;
+      background-image: url('https://www.kailash-yatra.org/images/ashtpad.jpg');
       background-size: cover;
       background-position: center;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
+      position: relative;
     }
 
-    /* Style the top Hindi greeting */
+    /* Hindi Greeting */
     .greeting {
       position: absolute;
       top: 20px;
       width: 100%;
-      font-size: 48px; /* Larger font size */
+      font-size: 48px;
       font-weight: bold;
-      color: #ff4081; /* Pink color */
-      background: linear-gradient(45deg, #ff4081, #ff80ab); /* Pink gradient */
-      -webkit-background-clip: text; /* Make the gradient apply only to the text */
+      color: #ff4081;
+      background: linear-gradient(45deg, #ff4081, #ff80ab);
+      -webkit-background-clip: text;
       background-clip: text;
-      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 64, 129, 0.8); /* Glow effect */
-      z-index: 10; /* Ensure it stays on top */
+      text-shadow: 3px 3px 8px rgba(0,0,0,0.5), 0 0 25px rgba(255,64,129,0.8);
+      z-index: 10;
       font-family: 'Arial', sans-serif;
       padding: 10px 0;
     }
 
-    /* Style the Sneh Prayas Committee text */
+    /* Sneh Prayas Committee text */
     .committee {
       position: absolute;
-      top: 90px; /* Position it below the main greeting */
+      top: 90px;
       width: 100%;
-      font-size: 30px; /* Slightly smaller font size */
+      font-size: 30px;
       font-weight: bold;
-      color: #ffffff; /* White color */
-      background: linear-gradient(45deg, #ff80ab, #ff4081); /* Gradient from pink to light pink */
-      -webkit-background-clip: text; /* Gradient clipped to text */
+      color: #fff;
+      background: linear-gradient(45deg, #ff80ab, #ff4081);
+      -webkit-background-clip: text;
       background-clip: text;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 64, 129, 0.6); /* Subtle glow */
-      z-index: 10; /* Ensure it stays on top */
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3), 0 0 10px rgba(255,64,129,0.6);
+      z-index: 10;
       font-family: 'Arial', sans-serif;
       padding: 5px 0;
-      text-transform: uppercase; /* Make the text uppercase for a bold look */
-      letter-spacing: 2px; /* Slight letter spacing */
-      animation: fadeIn 3s ease-out; /* Fading in animation */
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: fadeIn 3s ease-out;
     }
 
-    /* Animation for fading in the text */
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -69,15 +69,15 @@
       }
     }
 
-    /* Centering the form container */
+    /* Form container */
     .container {
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+      background-color: rgba(255, 255, 255, 0.8);
       padding: 20px;
       border-radius: 10px;
-      width: 80%; /* Adjust width as needed */
-      max-width: 600px; /* Maximum width */
+      width: 80%;
+      max-width: 600px;
       text-align: center;
-      z-index: 1; /* Ensure form is behind the greeting */
+      z-index: 1;
     }
 
     h2 {
@@ -129,31 +129,31 @@
 </head>
 <body>
 
-  <!-- Hindi Greeting Text -->
   <div class="greeting">
     स्नेह प्रयास परिवार आपका हार्दिक स्वागत करता है 🙏
   </div>
 
-  <!-- Sneh Prayas Committee Text -->
   <div class="committee">
     For Sneh Prayas Committee
   </div>
 
   <div class="container">
     <h2>Enter Booking ID to Access the Form</h2>
-    <input type="text" id="bookingId" placeholder="Enter Booking ID (e.g., spc01)">
+    <input type="text" id="bookingId" placeholder="Enter Booking ID (e.g., spc01)" />
     <button onclick="checkBookingId()">Submit</button>
 
     <p id="errorMsg"></p>
 
     <div id="formContainer" style="display:none;">
       <h3>Booking Form</h3>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfa4JVsl8UrsiXwkDofkSUMUAy5JCLhde6m3tioh0_hxrh-PA/viewform?embedded=true">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfa4JVsl8UrsiXwkDofkSUMUAy5JCLhde6m3tioh0_hxrh-PA/viewform?embedded=true"
+      >
         Loading…
       </iframe>
 
       <div class="terms">
-        <input type="checkbox" id="termsCheckbox" required>
+        <input type="checkbox" id="termsCheckbox" required />
         <label for="termsCheckbox">
           We hereby confirm that all the information provided is accurate and complete to the best of our knowledge. We acknowledge that we have read, understood, and agree to abide by the terms and conditions set forth by the Sneh Prayas Yatra Committee. Furthermore, we understand that the Committee reserves the right to reject our application without providing any reason, and may modify the itinerary, route, or destinations at any time prior to the trip.
         </label>
@@ -181,6 +181,5 @@
       }
     }
   </script>
-
 </body>
 </html>
