@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Booking Access</title>
+  <title>Committee Member Access</title>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Roboto&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -14,50 +14,52 @@
       background-image: url('https://www.kailash-yatra.org/images/ashtpad.jpg');
       background-size: cover;
       background-position: center;
+      background-color: rgba(255, 255, 255, 0.92);
+      background-blend-mode: overlay;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      color: #333;
+      color: #1a237e;
     }
 
     header {
-      font-size: 64px;
-      font-weight: 600;
-      color: #ad1457;
+      font-size: 56px;
+      font-weight: 700;
+      color: #283593;
       text-shadow: 0 0 2px rgba(0,0,0,0.1);
       animation: fadeInTop 2s ease-out forwards;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       user-select: none;
       margin: 20px 0 10px;
       padding: 0 15px;
     }
 
     .greeting {
-      font-size: 32px;
-      font-weight: 700;
-      color: #880e4f;
+      font-size: 26px;
+      font-weight: 600;
+      color: #3e2723;
       text-shadow: 0 0 1px rgba(0,0,0,0.05);
       animation: fadeInTop 2s ease-out forwards;
-      line-height: 1.3;
+      line-height: 1.4;
       user-select: none;
       margin-bottom: 20px;
       padding: 0 15px;
     }
 
     .container {
-      background-color: rgba(255, 240, 245, 0.9);
+      background-color: rgba(255, 255, 255, 0.96);
       padding: 20px 30px;
       border-radius: 12px;
       width: 90%;
       max-width: 600px;
       text-align: center;
-      box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3);
+      box-shadow: 0 6px 15px rgba(33, 33, 33, 0.1);
       margin-bottom: 40px;
     }
 
     h2 {
-      color: #ad1457;
+      color: #1a237e;
       font-weight: 700;
       margin-bottom: 15px;
     }
@@ -68,14 +70,14 @@
       width: 80%;
       margin: 12px 0;
       border-radius: 6px;
-      border: 1px solid #f48fb1;
-      outline-color: #f06292;
+      border: 1px solid #9fa8da;
+      outline-color: #3f51b5;
     }
 
     button {
       padding: 10px 24px;
       font-size: 16px;
-      background-color: #f06292;
+      background-color: #3f51b5;
       color: white;
       border: none;
       border-radius: 6px;
@@ -84,11 +86,11 @@
     }
 
     button:hover {
-      background-color: #ad1457;
+      background-color: #283593;
     }
 
     #errorMsg {
-      color: #d81b60;
+      color: #c62828;
       margin-top: 10px;
       font-weight: 600;
       min-height: 24px;
@@ -96,7 +98,7 @@
 
     .terms {
       font-size: 14px;
-      color: #880e4f;
+      color: #3e2723;
       margin-top: 15px;
       line-height: 1.3;
       user-select: none;
@@ -114,7 +116,7 @@
       border: none;
       margin-top: 15px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(240, 128, 152, 0.25);
+      box-shadow: 0 4px 10px rgba(63, 81, 181, 0.25);
     }
 
     @keyframes fadeInTop {
@@ -159,20 +161,21 @@
 </head>
 <body>
 
-  <header>अष्टापद महावंदना 2025</header>
+  <header>स्नेह प्रयास समिति सदस्य प्रवेश</header>
 
   <div class="greeting">
-    स्नेह प्रयास <br />आपका हार्दिक स्वागत करता है 🙏
+    🌟 स्नेह प्रयास परिवार के प्रिय सदस्य,<br />
+    आपका इस पुण्य अवसर पर हार्दिक स्वागत है।
   </div>
 
   <div class="container">
-    <h2>Enter Booking ID to Access the Form</h2>
-    <input type="text" id="bookingId" placeholder="Enter Booking ID (e.g., Spc101)" />
+    <h2>Enter Your Committee Booking ID</h2>
+    <input type="text" id="bookingId" placeholder="उदाहरण: spc101" />
     <button onclick="checkBookingId()">Submit</button>
     <p id="errorMsg"></p>
 
     <div id="formContainer" style="display:none;">
-      <h3>Booking Form</h3>
+      <h3>Committee Member Form</h3>
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLSfnm6wGhSC-OlH7usWDmGD5Wots_9NuTVN_jEU_PwdodYInkw/viewform?embedded=true"
         loading="lazy">
@@ -182,7 +185,7 @@
       <div class="terms">
         <input type="checkbox" id="termsCheckbox" required />
         <label for="termsCheckbox">
-          We hereby confirm that all the information provided is accurate and complete to the best of our knowledge...
+          मैं पुष्टि करता/करती हूँ कि उपरोक्त विवरण मेरे ज्ञान अनुसार सत्य एवं पूर्ण हैं, और मैं स्नेह प्रयास समिति का सक्रिय सदस्य हूँ।
         </label>
       </div>
     </div>
@@ -197,10 +200,8 @@
       }
     }
 
-    // Allowed Booking IDs: spc101–152
+    // Committee Booking IDs (you can update this list/range)
     addBookingRange('spc', 101, 152);
-
-    // Manually add spc435 and spc436
     validBookingIds.push('spc435', 'spc436');
 
     function checkBookingId() {
@@ -209,11 +210,12 @@
       const formContainer = document.getElementById("formContainer");
 
       if (!validBookingIds.includes(enteredId)) {
-        errorMsg.innerText = "❌ Invalid Booking ID. Please try again.";
+        errorMsg.innerText = "❌ अमान्य सदस्य आईडी। कृपया पुनः प्रयास करें।";
         formContainer.style.display = "none";
       } else {
         errorMsg.innerText = "";
         formContainer.style.display = "block";
+        document.getElementById("formContainer").scrollIntoView({ behavior: 'smooth' });
       }
     }
   </script>
