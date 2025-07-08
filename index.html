@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Committee Member Access</title>
+  <title>Committee Member Portal</title>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Roboto&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -161,23 +161,23 @@
 </head>
 <body>
 
-  <header>स्नेह प्रयास समिति सदस्य प्रवेश</header>
+  <header>स्नेह प्रयास समिति पोर्टल</header>
 
   <div class="greeting">
-    🌟 स्नेह प्रयास परिवार के प्रिय सदस्य,<br />
-    आपका इस पुण्य अवसर पर हार्दिक स्वागत है।
+    🙏 आदरणीय समिति सदस्य,<br />
+    यह पावन आयोजन आपके निरंतर सहयोग और सेवा से ही संभव हुआ है।
   </div>
 
   <div class="container">
-    <h2>Enter Your Committee Booking ID</h2>
-    <input type="text" id="bookingId" placeholder="उदाहरण: spc101" />
-    <button onclick="checkBookingId()">Submit</button>
+    <h2>अपनी सदस्य आईडी दर्ज करें</h2>
+    <input type="text" id="bookingId" placeholder="जैसे: spc101" />
+    <button onclick="checkBookingId()">प्रवेश करें</button>
     <p id="errorMsg"></p>
 
     <div id="formContainer" style="display:none;">
-      <h3>Committee Member Form</h3>
+      <h3>सदस्य विवरण फ़ॉर्म</h3>
       <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSfnm6wGhSC-OlH7usWDmGD5Wots_9NuTVN_jEU_PwdodYInkw/viewform?embedded=true"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfNC8UMYFp2iph57K58tUTAqCAQJwdki1NJwy92DTxHm7xVBw/viewform?embedded=true"
         loading="lazy">
         Loading…
       </iframe>
@@ -185,7 +185,7 @@
       <div class="terms">
         <input type="checkbox" id="termsCheckbox" required />
         <label for="termsCheckbox">
-          मैं पुष्टि करता/करती हूँ कि उपरोक्त विवरण मेरे ज्ञान अनुसार सत्य एवं पूर्ण हैं, और मैं स्नेह प्रयास समिति का सक्रिय सदस्य हूँ।
+          मैं यह प्रमाणित करता/करती हूँ कि दिए गए सभी विवरण सत्य हैं और मैं समिति सदस्य के रूप में सक्रिय हूँ।
         </label>
       </div>
     </div>
@@ -200,7 +200,7 @@
       }
     }
 
-    // Committee Booking IDs (you can update this list/range)
+    // Valid Committee Booking IDs
     addBookingRange('spc', 101, 152);
     validBookingIds.push('spc435', 'spc436');
 
@@ -210,7 +210,7 @@
       const formContainer = document.getElementById("formContainer");
 
       if (!validBookingIds.includes(enteredId)) {
-        errorMsg.innerText = "❌ अमान्य सदस्य आईडी। कृपया पुनः प्रयास करें।";
+        errorMsg.innerText = "❌ सदस्य आईडी मान्य नहीं है। कृपया पुनः प्रयास करें।";
         formContainer.style.display = "none";
       } else {
         errorMsg.innerText = "";
