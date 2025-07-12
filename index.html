@@ -28,23 +28,14 @@
       font-weight: 700;
       color: #283593;
       text-shadow: 0 0 2px rgba(0,0,0,0.1);
-      animation: fadeInTop 2s ease-out forwards;
-      letter-spacing: 0.06em;
-      user-select: none;
       margin: 20px 0 10px;
-      padding: 0 15px;
     }
 
     .greeting {
       font-size: 26px;
       font-weight: 600;
       color: #3e2723;
-      text-shadow: 0 0 1px rgba(0,0,0,0.05);
-      animation: fadeInTop 2s ease-out forwards;
-      line-height: 1.4;
-      user-select: none;
       margin-bottom: 20px;
-      padding: 0 15px;
     }
 
     .container {
@@ -53,15 +44,8 @@
       border-radius: 12px;
       width: 90%;
       max-width: 600px;
-      text-align: center;
       box-shadow: 0 6px 15px rgba(33, 33, 33, 0.1);
       margin-bottom: 40px;
-    }
-
-    h2 {
-      color: #1a237e;
-      font-weight: 700;
-      margin-bottom: 15px;
     }
 
     input[type="text"] {
@@ -100,62 +84,20 @@
       font-size: 14px;
       color: #3e2723;
       margin-top: 15px;
-      line-height: 1.3;
-      user-select: none;
+      line-height: 1.4;
       text-align: left;
     }
 
-    .terms input[type="checkbox"] {
-      margin-right: 10px;
-      cursor: pointer;
-    }
-
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      margin-top: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(63, 81, 181, 0.25);
-    }
-
-    @keyframes fadeInTop {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .formLinkButton {
+      margin-top: 20px;
     }
 
     @media (max-width: 768px) {
-      header {
-        font-size: 36px;
-        margin-top: 20px;
-      }
-
-      .greeting {
-        font-size: 20px;
-        margin-bottom: 20px;
-      }
-
-      .container {
-        padding: 15px 20px;
-      }
-
-      input[type="text"] {
-        width: 100%;
-        font-size: 14px;
-      }
-
-      button {
-        font-size: 14px;
-        padding: 8px 16px;
-      }
-
-      iframe {
-        height: 400px;
-      }
-
-      .terms {
-        font-size: 12px;
-      }
+      header { font-size: 36px; }
+      .greeting { font-size: 20px; margin-bottom: 20px; }
+      .container { padding: 15px 20px; }
+      input[type="text"] { width: 100%; font-size: 14px; }
+      button { font-size: 14px; padding: 8px 16px; }
     }
   </style>
 </head>
@@ -175,18 +117,13 @@
     <p id="errorMsg"></p>
 
     <div id="formContainer" style="display:none;">
-      <h3>सदस्य विवरण फ़ॉर्म</h3>
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSfNC8UMYFp2iph57K58tUTAqCAQJwdki1NJwy92DTxHm7xVBw/viewform?embedded=true"
-        loading="lazy">
-        Loading…
-      </iframe>
-
       <div class="terms">
-        <input type="checkbox" id="termsCheckbox" required />
-        <label for="termsCheckbox">
-          मैं यह प्रमाणित करता/करती हूँ कि दिए गए सभी विवरण सत्य हैं और मैं समिति सदस्य के रूप में सक्रिय हूँ।
-        </label>
+        ✅ सदस्य आईडी सत्यापित हो गई है। कृपया नीचे दिए गए बटन पर क्लिक कर फ़ॉर्म भरें।
+      </div>
+      <div class="formLinkButton">
+        <a id="formLink" href="#" target="_blank">
+          <button>📄 फ़ॉर्म खोलें (Open Form)</button>
+        </a>
       </div>
     </div>
   </div>
@@ -196,7 +133,7 @@
 
     function addBookingRange(prefix, start, end) {
       for (let i = start; i <= end; i++) {
-        validBookingIds.push(prefix.toLowerCase() + i);
+        validBookingIds.push((prefix + i).toLowerCase());
       }
     }
 
@@ -204,10 +141,15 @@
     addBookingRange('spc', 101, 152);
     validBookingIds.push('spc435', 'spc436');
 
+    const formBaseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfNC8UMYFp2iph57K58tUTAqCAQJwdki1NJwy92DTxHm7xVBw/viewform';
+    const entryKey = 'entry.1689621018'; // Update this to match your form field
+
     function checkBookingId() {
-      const enteredId = document.getElementById("bookingId").value.trim().toLowerCase();
+      const bookingInput = document.getElementById("bookingId");
+      const enteredId = bookingInput.value.trim().toLowerCase();
       const errorMsg = document.getElementById("errorMsg");
       const formContainer = document.getElementById("formContainer");
+      const formLink = document.getElementById("formLink");
 
       if (!validBookingIds.includes(enteredId)) {
         errorMsg.innerText = "❌ सदस्य आईडी मान्य नहीं है। कृपया पुनः प्रयास करें।";
@@ -215,7 +157,15 @@
       } else {
         errorMsg.innerText = "";
         formContainer.style.display = "block";
-        document.getElementById("formContainer").scrollIntoView({ behavior: 'smooth' });
+
+        // Lock input
+        bookingInput.readOnly = true;
+
+        // Generate Google Form URL with prefilled booking ID
+        const fullUrl = `${formBaseUrl}?usp=pp_url&${entryKey}=${encodeURIComponent(enteredId)}`;
+        formLink.href = fullUrl;
+
+        formContainer.scrollIntoView({ behavior: 'smooth' });
       }
     }
   </script>
